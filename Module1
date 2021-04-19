@@ -1,0 +1,15 @@
+Type pceQR
+    pceName As String
+    flNum As String
+    equip_Type As String
+    equip_Status As String
+    c1 As Date
+    c2 As Date
+    c3 As Date
+    c4 As Date
+    next_maint As Date
+End Type
+
+Public pceArray(100) As pceQR
+Public pceLength As Integer
+Public flArray(100) As String
