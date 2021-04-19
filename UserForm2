@@ -1,0 +1,3 @@
+Private Sub searchcancelButton_Click()
+    UserForm2.Hide
+End Sub
