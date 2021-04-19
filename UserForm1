@@ -1,0 +1,61 @@
+Private Sub searchButton_Click()
+    'Extract data from searchBox
+    Dim n As Integer
+    Dim m As Integer
+    
+    'Identify table size
+
+    
+    For n = 1 To pceLength
+        
+        If pceArray(n).pceName = searchBox.Text Then
+            assetName.Caption = pceArray(n).pceName
+            equipType.Caption = pceArray(n).equip_Type
+            equipStats.Caption = pceArray(n).equip_Status
+            nextmaintDate.Caption = pceArray(n).next_maint
+            functLocation.Caption = pceArray(n).flNum
+                        
+            n = pceLength + 1
+        ElseIf n = pceLength Then
+            assetName.Caption = "Not Found"
+        End If
+        
+    Next n
+    
+    'UserForm2.Show
+End Sub
+
+Public Sub UserForm_Initialize()
+    'Extract all information from Excel
+    Dim n As Integer
+    Dim m As Integer
+    
+    'Cycle through the table for initializing array
+    
+    m = 2
+    n = 1
+    
+    While n = 1
+    
+        If Sheet1.Cells(m, 2).Value <> "" Then
+            pceArray(m - 1).pceName = Sheet1.Cells(m, 2).Value
+            pceArray(m - 1).flNum = Sheet1.Cells(m, 3).Value
+            pceArray(m - 1).equip_Type = Sheet1.Cells(m, 5).Value
+            pceArray(m - 1).equip_Status = Sheet1.Cells(m, 6).Value
+            pceArray(m - 1).c1 = Sheet1.Cells(m, 7).Value
+            pceArray(m - 1).c2 = Sheet1.Cells(m, 8).Value
+            pceArray(m - 1).c3 = Sheet1.Cells(m, 9).Value
+            pceArray(m - 1).c4 = Sheet1.Cells(m, 10).Value
+            pceArray(m - 1).next_maint = Sheet1.Cells(m, 4).Value
+            
+            m = m + 1
+        Else
+            m = m - 2
+            n = 0
+        End If
+
+    Wend
+    
+    pceLength = m
+    
+End Sub
